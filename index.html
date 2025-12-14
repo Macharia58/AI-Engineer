@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary Macharia - AI Engineer & ML Specialist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --dark: #0f172a;
+            --dark-secondary: #1e293b;
+            --light: #f8fafc;
+            --text-light: #cbd5e1;
+            --text-dark: #334155;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem 2rem;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-secondary) 100%);
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .hero .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin: 1rem auto;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--dark-secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-category li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--dark-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .project-card .project-content {
+            padding: 2rem;
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .project-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--dark-secondary);
+            padding: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--dark-secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .testimonial-card p {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .testimonial-role {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 5px;
+            background: var(--dark-secondary);
+            color: var(--light);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background: var(--dark-secondary);
+            margin: 2% auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 10px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideDown 0.3s;
+        }
+
+        .close {
+            color: var(--text-light);
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-secondary);
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid,
+            .skills-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo"><img src="Image1.jpeg" alt="My Profile Picture" style="width: 100px; border-radius: 60%;"></div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Mary Macharia</h1>
+            <div class="subtitle">AI Engineer • ML Specialist • LLM Automation Developer</div>
+            <p>I create high-impact AI solutions that reduce operational workload, enhance decision-making, and automate repetitive business processes. Specialized in machine learning, deep learning, NLP, and production-ready AI applications.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="https://drive.google.com/file/d/1MehPLh-qGKZBbPpL86AB09waEkMEPH6W/view?usp=sharing">View CV</button>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Core Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>AI & Machine Learning</h3>
+                <ul>
+                    <li>Machine Learning (Supervised & Unsupervised)</li>
+                    <li>Deep Learning (CNNs, RNNs, Transformers)</li>
+                    <li>Natural Language Processing</li>
+                    <li>Large Language Models (LLMs)</li>
+                    <li>Prompt Engineering & RAG Systems</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Programming & Frameworks</h3>
+                <ul>
+                    <li>Python (Advanced)</li>
+                    <li>PyTorch & TensorFlow</li>
+                    <li>Scikit-Learn & Keras</li>
+                    <li>Pandas & NumPy</li>
+                    <li>FastAPI & Flask</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Deployment & MLOps</h3>
+                <ul>
+                    <li>Docker Containers</li>
+                    <li>Model Deployment & Serving</li>
+                    <li>Cloud Computing (AWS/GCP/Azure)</li>
+                    <li>MLflow & Weights & Biases</li>
+                    <li>API Development & Integration</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Applied AI Solutions</h3>
+                <ul>
+                    <li>Intelligent Workflow Automation</li>
+                    <li>Conversational AI & Chatbots</li>
+                    <li>WhatsApp/Telegram Bot Development</li>
+                    <li>Web Scraping & ETL Pipelines</li>
+                    <li>Business Process Automation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Intelligent Business Automation Assistant</h3>
+                    <p>Multi-agent automation system capable of generating emails, writing reports, extracting data, and responding to user commands with 90%+ accuracy.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">LLMs</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Vector DB</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>WhatsApp Customer Support Bot</h3>
+                    <p>Conversational AI bot integrated via WhatsApp Cloud API to automate customer interaction, FAQs, and support tickets with natural language understanding.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Meta API</span>
+                        <span class="tech-tag">Webhooks</span>
+                        <span class="tech-tag">GPT</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>ML Prediction Models for SMEs</h3>
+                    <p>Classification and regression models predicting customer churn and product demand, helping small businesses make data-driven decisions.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Scikit-Learn</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Sentiment Analysis Engine</h3>
+                    <p>Deep learning-powered sentiment analyzer for social media and product reviews, providing real-time insights into customer feedback.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Transformers</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">NLP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Document Q&A System (RAG)</h3>
+                    <p>Retrieval-Augmented Generation system that allows users to query internal documents and receive accurate, context-aware answers instantly.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Vector DB</span>
+                        <span class="tech-tag">LLMs</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Automated Web Scraping & ETL Tool</h3>
+                    <p>Intelligent data extraction and cleaning pipeline for market research and lead generation, processing thousands of records daily.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">BeautifulSoup</span>
+                        <span class="tech-tag">Selenium</span>
+                        <span class="tech-tag">Pandas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title">What I Can Do For You</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>AI Model Development</h3>
+                <p>Custom machine learning and deep learning models tailored to your business needs, from concept to deployment.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Business Automation</h3>
+                <p>Intelligent workflow automation using LLMs and AI to eliminate repetitive tasks and boost productivity.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💬</div>
+                <h3>Conversational AI</h3>
+                <p>Design and deploy chatbots for WhatsApp, Telegram, Slack, and web platforms with natural language understanding.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Data Engineering</h3>
+                <p>Build robust ETL pipelines, data cleaning workflows, and analytics solutions for data-driven decision making.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>MLOps & Deployment</h3>
+                <p>End-to-end model deployment, optimization, and monitoring using modern MLOps practices and cloud infrastructure.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>NLP Solutions</h3>
+                <p>Text analysis, sentiment analysis, document processing, and semantic search powered by advanced NLP techniques.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2 class="section-title">Client Testimonials</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p>"Working with Mary was exceptional. She delivered an AI automation system that reduced our customer support workload by 60%. Her technical expertise and communication made the entire process smooth."</p>
+                <div class="testimonial-author">James Omondi</div>
+                <div class="testimonial-role">CEO, TechVenture Kenya</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Mary built a custom ML model that accurately predicts our inventory needs. The solution is production-ready, well-documented, and has saved us countless hours. Highly recommended!"</p>
+                <div class="testimonial-author">Sarah Wanjiku</div>
+                <div class="testimonial-role">Operations Manager, RetailHub</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"The WhatsApp chatbot Mary developed transformed how we engage with customers. It's intelligent, responsive, and handles complex queries remarkably well. Outstanding work!"</p>
+                <div class="testimonial-author">David Kimani</div>
+                <div class="testimonial-role">Founder, SME Solutions</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Let's Build Something Amazing</h3>
+                <p style="color: var(--text-light); margin-bottom: 2rem;">Whether you need AI consultation, custom model development, or business automation solutions, I'm here to help bring your vision to life.</p>
+                <div class="contact-item">
+                    <span style="font-size: 1.5rem;">📧</span>
+                    <div>
+                        <div style="color: var(--primary);">Email</div>
+                        <div>machariam082@gmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span style="font-size: 1.5rem;">📱</span>
+                    <div>
+                        <div style="color: var(--primary);">Phone</div>
+                        <div>+254 797488020</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span style="font-size: 1.5rem;">📍</span>
+                    <div>
+                        <div style="color: var(--primary);">Location</div>
+                        <div>Nairobi, Kenya</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span style="font-size: 1.5rem;">💻</span>
+                    <div>
+                        <div style="color: var(--primary);">GitHub</div>
+                        <a href="https://github.com/Macharia58" target="_blank" style="color: var(--text-light);">github.com/Macharia58</a>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input type="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" required placeholder="Project Inquiry">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea required placeholder="Tell me about your project..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Mary Macharia. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/Macharia58" target="_blank">GitHub</a>
+            <a href="mailto:machariam082@gmail.com">Email</a>
+        </div>
+    </footer>
+
+    <!-- CV Modal -->
+    <div id="cvModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--primary); margin-bottom: 2rem;">Curriculum Vitae</h2>
+            <div style="margin-bottom: 2rem;">
+                <p style="color: var(--text-light); margin-bottom: 1rem;">You can download my full CV to learn more about my experience, skills, and projects.</p>
+                <button class="btn btn-primary" onclick="downloadCV()">📥 Download CV (PDF)</button>
+            </div>
+            <div style="border-top: 1px solid rgba(59, 130, 246, 0.3); padding-top: 2rem;">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Quick Overview</h3>
+                <p style="color: var(--text-light); line-height: 1.8;">
+                    <strong>Education:</strong> Bachelor in Computer Science, University of the People (2020-2024)<br><br>
+                    <strong>Experience:</strong> AI Engineer & Automation Developer (2023 - Present)<br><br>
+                    <strong>Key Achievements:</strong><br>
+                    • Developed LLM-powered automation systems with 90%+ accuracy<br>
+                    • Built and deployed multiple end-to-end ML models<br>
+                    • Created custom chatbots for WhatsApp and Telegram<br>
+                    • Optimized ML models, reducing inference time by up to 30%<br><br>
+                    <strong>Core Skills:</strong> Python, PyTorch, TensorFlow, NLP, LLMs, FastAPI, Docker, MLOps
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('cvModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('cvModal').style.display = 'none';
+        }
+
+        function downloadCV() {
+            alert('CV download initiated! In a real implementation, this would download the PDF file.');
+            // In real implementation: window.location.href = 'path-to-cv.pdf';
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            event.target.reset();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('cvModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation for sections
+        const observerOptions = {
+            threshold: 0.1,
